@@ -98,6 +98,25 @@ Answer: The possible responses are *Does not apply (i do not have a job/superior
 
 2.  What percent of the respondents for whom this question is applicable\
     (i.e. excluding `NA`s and `Does not apply`s) have been harassed by their superiors or co-workers at their job.
+    
+```{r}
+#| label: applicable_responses
+#| eval: true
+
+applicable_responses <- subset(gss16, !is.na(harass5) & harass5 != "Does not apply (i do not have a job/superior/co-worker)")
+
+total_applicable <- nrow(applicable_responses)
+
+harassed_count <- sum(applicable_responses$harass5 == "Yes")
+
+percent_harassed <- (harassed_count / total_applicable) * 100
+
+print(percent_harassed)
+
+```
+
+**Answer:**
+17.26147% percent of people surveyed were harassed.
 
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.*
 
