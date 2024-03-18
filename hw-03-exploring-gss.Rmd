@@ -174,9 +174,26 @@ gss16 <- gss16 %>%
 
 ```
 
-(*Used Chapter 4 of R for Data Science to learn Workflow: code styles*)
+(*Used Chapter 4 of R for Data Science to learn Workflow: code styles, along with Chapter 13 on numbers.*)
 
 6.  Calculate the percentage of Yes's for `snap_insta` among those who answered the question, i.e. excluding `NA`s.
+
+```{r}
+#| label: snap_insta_yes_percent
+#| eval: true
+
+total_responses <- sum(!is.na(gss16$snap_insta))
+
+yes_responses <- sum(gss16$snap_insta == "Yes", na.rm = TRUE)
+
+percentage_yes <- (yes_responses / total_responses) * 100
+
+print(percentage_yes)
+
+```
+
+**Answer:**
+The percentage of people who said yes in the snap_insta variable (while excluding all who said NA) was 37.46356%
 
 7.  What are the possible responses to the question *Last week were you working full time, part time, going to school, keeping house, or what?* and how many respondents chose each of these answers?
     Note that this information is stored in the `wrkstat` variable.
