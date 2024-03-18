@@ -74,6 +74,28 @@ Answers to this question are stored in the `harass5` variable in our dataset.
 
 1.  What are the possible responses to this question and how many respondents chose each of these answers?
 
+```{r}
+#| label: question_responses
+#| eval: true
+
+str(gss16)
+
+response_counts <- table(gss16$harass5)
+
+sorted_responses <- sort(response_counts)
+
+print(sorted_responses)
+
+```
+
+Answer: The possible responses are *Does not apply (i do not have a job/superior/coworker)*, *Yes*, and *No*.
+
+96 people answered *Does not apply*.
+
+237 people answered *Yes*.
+
+1136 people answered *No*.
+
 2.  What percent of the respondents for whom this question is applicable\
     (i.e. excluding `NA`s and `Does not apply`s) have been harassed by their superiors or co-workers at their job.
 
