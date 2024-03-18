@@ -250,6 +250,24 @@ model
 9.  Create a predicted values vs. residuals plot for this model.
     Are there any issues with the model?
     If yes, describe them.
+    
+```{r}
+#| label: predicted_vs_residuals
+#| eval: true
+
+plot(model$fitted.values, model$residuals,
+     xlab = "Predicted Values",
+     ylab = "Residuals",
+     main = "Predicted Values vs. Residuals Plot")
+
+abline(h = 0, col = "red", lty = 2)
+
+lines(lowess(model$fitted.values, model$residuals), col = "green")
+
+```
+
+**Answer:**
+The biggest issue with this plot is that the majority of residuals do not rest near 0. This makes it a challenge to see a discernible pattern.
 
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.*
 
