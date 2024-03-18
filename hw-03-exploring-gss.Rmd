@@ -301,8 +301,8 @@ Responses that were originally Don't know, No answer and Not applicable are alre
     Don't overwrite the existing `advfront`, instead pick a different, informative name for your new variable.
 
 ```{r}
-#|label: support_science
-#|eval: true
+#| label: support_science
+#| eval: true
 
 gss16 <- gss16 %>%
   mutate(support_science = recode(advfront,
@@ -319,8 +319,8 @@ gss16 <- gss16 %>%
     Don't overwrite the existing `polviews`, instead pick a different, informative name for your new variable.
   
 ```{r}
-#|label: ideology
-#|eval: true
+#| label: ideology
+#| eval: true
 
 gss16 <- gss16 %>%
   mutate(ideology = recode(polviews,
@@ -334,6 +334,25 @@ gss16 <- gss16 %>%
 ```
 
 12. Create a visualization that displays the relationship between these two new variables and interpret it.
+
+```{r}
+#| label: science_vs_ideology
+#| eval: true
+
+ggplot(gss16, aes(x = ideology, fill = support_science)) +
+  geom_bar(position = "stack") +
+  labs(title = "Relationship Between Ideology and Support for Science",
+       x = "Political Ideology",
+       y = "Count") +
+  scale_fill_manual(values = c("Yes" = "blue", "No" = "red"),
+                    name = "Support for Science") +
+  theme_minimal() +
+  theme(legend.position = "top")
+
+```
+
+**Answer:**
+Both of Conservative, Liberal, and Moderate leaning ideologies share similar support count of support for science. However, Conservative leaning ideologies have the greatest count of people who do not support science. Although both are similar, this graph shows that conservative leaning people are less likely to support science.
 
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and review the md document on GitHub to make sure you're happy with the final state of your work.*
 
