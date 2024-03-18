@@ -1,5 +1,6 @@
 ---
 title: "HW 03 - Exploring the GSS"
+author: "Matthew Foster"
 output: html_document
 ---
 
@@ -41,7 +42,7 @@ We'll use the **tidyverse** package for much of the data wrangling and visualisa
 
 You will need to install the packages and to install dsbox copy the following code into the console: 
 
-```
+```{r, message = FALSE, eval = TRUE}
 install.packages("devtools")
 devtools::install_github("tidyverse/dsbox")
 ```
