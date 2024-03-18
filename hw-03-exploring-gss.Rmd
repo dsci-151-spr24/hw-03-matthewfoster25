@@ -160,6 +160,21 @@ Both the mean and median value for the typical amount of time responding to emai
 
 5.  Create another new variable, `snap_insta` that is coded as "Yes" if the respondent reported using any of Snapchat (`snapchat`) or Instagram (`instagrm`), and "No" if not.
     If the recorded value was `NA` for both of these questions, the value in your new variable should also be `NA`.
+    
+```{r}
+#| label: snap_insta_variable
+#| eval: true
+
+gss16 <- gss16 %>%
+  mutate(snap_insta = ifelse(is.na(snapchat) & is.na(instagrm),
+                              NA,
+                              ifelse(snapchat == "Yes" | instagrm == "Yes",
+                                     "Yes",
+                                     "No")))
+
+```
+
+(*Used Chapter 4 of R for Data Science to learn Workflow: code styles*)
 
 6.  Calculate the percentage of Yes's for `snap_insta` among those who answered the question, i.e. excluding `NA`s.
 
