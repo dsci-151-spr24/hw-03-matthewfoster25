@@ -198,6 +198,19 @@ The percentage of people who said yes in the snap_insta variable (while excludin
 7.  What are the possible responses to the question *Last week were you working full time, part time, going to school, keeping house, or what?* and how many respondents chose each of these answers?
     Note that this information is stored in the `wrkstat` variable.
 
+```{r}
+#| label: wrkstat_responses
+#| eval: true
+
+wrkstat_counts <- table(gss16$wrkstat)
+
+print(wrkstat_counts)
+
+```
+
+**Answer:**
+The possible responses are *Keeping House (284), Other (89), Retired (574), School (76), Temp not working (57), Umployed or laid off (118), Working fulltime (1321), and Working parttime (345).*
+
 8.  Fit a model predicting `email` (number of minutes per week spent on email) from `educ` (number of years of education), `wrkstat`, and `snap_insta`.
     Interpret the slopes for each of these variables.
 
