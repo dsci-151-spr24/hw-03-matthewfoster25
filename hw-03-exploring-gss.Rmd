@@ -213,6 +213,39 @@ The possible responses are *Keeping House (284), Other (89), Retired (574), Scho
 
 8.  Fit a model predicting `email` (number of minutes per week spent on email) from `educ` (number of years of education), `wrkstat`, and `snap_insta`.
     Interpret the slopes for each of these variables.
+    
+```{r}
+#| label: linear_model
+#| eval: true
+
+model <- lm(email ~ educ + wrkstat + snap_insta, data = gss16)
+
+model
+
+```
+
+**Intercept** = -229.74 (representing the estimated additional time spent on email per week if all other variables are 0)
+
+**educ (Number of years of education)** = 29.63 (expected additional minutes of emails per week for each year of school)
+
+**Work Status** (additional minutes for each work status)
+
+  *Other* = 33.06
+  
+  *Retired* = 68.28
+  
+  *School* = -123.81
+  
+  *Temp not working* = -73.71
+  
+  *Unempl. laid off* = 118.35
+  
+  *Working fulltime* = 366.84
+  
+  *Working partime* = 18.90
+
+**Snapchat/Instagram Usage** = 149.96 (expected additional minutes on email per week for those who use Snapchat and Instagram)
+
 
 9.  Create a predicted values vs. residuals plot for this model.
     Are there any issues with the model?
