@@ -269,6 +269,8 @@ lines(lowess(model$fitted.values, model$residuals), col = "green")
 **Answer:**
 The biggest issue with this plot is that the majority of residuals do not rest near 0. This makes it a challenge to see a discernible pattern.
 
+*Used https://www.ncl.ac.uk/webtemplate/ask-assets/external/maths-resources/statistics/regression-and-correlation/residuals.html#:~:text=Definition,yi%E2%88%92%5Eyi. to understand the graph and role of predicted values and residuals.*
+
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.*
 
 ## Part 3: Political views and science research
@@ -298,10 +300,24 @@ Responses that were originally Don't know, No answer and Not applicable are alre
     The remaining levels can be left as is.
     Don't overwrite the existing `advfront`, instead pick a different, informative name for your new variable.
 
+```{r}
+#|label: advfront_variable
+#|eval: true
+
+gss16 <- gss16 %>%
+  mutate(support_science = recode(advfront,
+                                  `Strongly agree` = "Yes",
+                                  `Agree` = "Yes",
+                                  `Disagree` = "No",
+                                  `Strongly disagree` = "No"))
+
+```
+
 11. In a new variable, recode `polviews` such that Extremely liberal, Liberal, and Slightly liberal, are mapped to `"Liberal"`, and Slghtly conservative, Conservative, and Extrmly conservative disagree are mapped to `"Conservative"`.
     The remaining levels can be left as is.
     Make sure that the levels are in a reasonable order.
     Don't overwrite the existing `polviews`, instead pick a different, informative name for your new variable.
+  
 
 12. Create a visualization that displays the relationship between these two new variables and interpret it.
 
